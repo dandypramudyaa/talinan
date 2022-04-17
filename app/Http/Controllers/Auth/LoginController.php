@@ -52,10 +52,10 @@ class LoginController extends Controller
             $user = User::where('email', $request->email)->first();
             if(auth()->user()->roles == 'Admin'){
                 return redirect()->route('admins.dashboard');
+            }elseif(auth()->user()->roles == 'Petugas'){
+                return redirect()->route('petugas.dashboard');
             }elseif(auth()->user()->roles == 'User'){
-                return view('owner.home', [
-                    'user' => $user
-                ]);
+                return redirect()->route('home');
             }
         }
     }

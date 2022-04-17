@@ -24,6 +24,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware();
 
+Route::name('petugas.')->prefix('petugas')->group(function () {
+    require_once __DIR__.'/web/petugas.php';
+});
+
 Route::name('admins.')->prefix('admin')->group(function () {
 
     require_once __DIR__.'/web/admin.php';
