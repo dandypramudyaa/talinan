@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+span,
+button,
+a,
+input,
+form {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.table {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.table-cell {
+    display: table-cell;
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+}
+
+.navbar-brand {
+    color: #fff;
+    font-size: 30px;
+    letter-spacing: 2px;
+    font-weight: 7 00;
+}
+
+li.nav-item {
+    margin-right: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+li.nav-item a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.header-all {
+    position: fixed;
+    width: 100%;
+    /* box-shadow: 0px 3px 5px rgb(100 100 100 / 50%); */
+    height: 80px;
+    line-height: 50px;
+    z-index: 1;
+}
+
+.navbar-toggler {
+    background-color: #fff;
+}
+
+.navbar-toggler-icon {
+    display: inline-block;
+    height: 1.5em;
+    vertical-align: middle;
+    content: "";
+    background: url('../menu.png');
+    background-size: 100% 100%;
+}
+
+
+.btn-orange {
+    display: block;
+    background-color: rgb(228, 61, 0);
+    border-radius: 5px;
+    color: #fff !important;
+    height: 45px;
+    line-height: 30px;
+    transition: all 0.5s;
+    text-align: center;
+}
+
+.btn-orange:hover {
+    background-color: rgb(143, 38, 0);
+}
+
+.hero-background .table {
+    background-color: rgb(0, 0, 0, 0.5);
+}
+
+.hero-background .hero-title {
+    color: #fff;
+}
+
+.btn-orange-hero {
+    display: block;
+    background-color: rgb(228, 61, 0);
+    border-radius: 5px;
+    color: #fff !important;
+    height: 45px;
+    line-height: 45px;
+    transition: all 0.5s;
+    text-align: center;
+    width: 180px;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+
+.btn-orange-hero:hover {
+    background-color: rgb(143, 38, 0);
+    text-decoration: none;
+}
+
+.section-1 {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.section-1-content h2{
+    text-align: center;
+}
+
+.section-1-content {
+    margin: auto;
+    max-width: 600px;
+    text-align: justify;
+}
+
+
+.section-2 .table {
+    background: linear-gradient(90deg, #F4EFE5 12.44%, rgba(244, 239, 229, 0.25) 52.81%);
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.section-3 .card {
+    margin: 0 10px;
+    width: 200px !important;
+}
+
+.section-2 p {
+    text-align: justify;
+}
+
+.section-3 p {
+    text-align: justify;
+}
+
+.section-3 .table {
+    background: linear-gradient(-90deg, #53524fcc 12.44%, rgba(168, 165, 158, 0.25) 52.81%);
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.section-3 h2 {
+    color: #fff;
+}
+
+.section-3 p {
+    color: #fff;
+}
+
+.section-3 .card p {
+    color: #000;
+}
+.section-2 .card {
+    margin: 0 10px;
+    width: 200px !important;
+}
+
+
+.sticky {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.slick-slide {
+    margin: 0 15px;
+}
+
+.slick-slide img {
+    display: block;
+    height: 150px;
+    width: 100%;
+}
+
+.btn-primary {
+    background-color: rgb(228, 61, 0) !important;
+    border: none;
+    display: block;
+    margin: 20px auto;
+}
+
+.section-4 .table {
+    background-color: rgb(0,0,0,0.5);
+}
+
+
+@media(max-width:997px) {
+
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        /* adjust to height of navbar */
+        left: 0;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 15px;
+        width: 75%;
+        height: 100%;
+        background: #000;
+    }
+
+    .navbar-collapse.collapsing {
+        left: -75%;
+        transition: height 0s ease;
+    }
+
+    .navbar-collapse.show {
+        left: 0;
+        transition: left 300ms ease-in-out;
+    }
+
+    .navbar-toggler.collapsed~.navbar-collapse {
+        transition: left 500ms ease-in-out;
+    }
+}
