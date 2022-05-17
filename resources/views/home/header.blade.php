@@ -13,16 +13,16 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Home</a>
+                                <a class="nav-link" href="{{ route('user.home') }}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">About</a>
+                                <a class="nav-link" href="{{ route('user.lapor-banjir') }}">Lapor Banjir</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Donation</a>
+                                <a class="nav-link" href="{{ route('user.donasi') }}">Donasi</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Article</a>
+                                <a class="nav-link" href="{{ route('user.artikel') }}">Article</a>
                             </li>
                             @if(empty(auth()->user()))
                                 <li class="nav-item">

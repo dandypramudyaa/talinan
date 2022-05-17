@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Application\Web\User\UserHomeController;
 use App\Http\Controllers\Application\Web\Admin\ProfileController;
 
 /*
@@ -15,10 +16,14 @@ use App\Http\Controllers\Application\Web\Admin\ProfileController;
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-    return view('home');
-});
+Route::get('/',  [UserHomeController::class, 'index'])->name('user.home');
+Route::get('/lapor-banjir',  [UserHomeController::class, 'laporBanjir'])->name('user.lapor-banjir');
+Route::get('/donasi',  [UserHomeController::class, 'donasi'])->name('user.donasi');
+Route::get('/artikel',  [UserHomeController::class, 'article'])->name('user.artikel');
+
+// Route::get('/', function () {
+//     return view('home');
+// });
 
 Auth::routes();
 

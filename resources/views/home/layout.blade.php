@@ -13,6 +13,8 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('home-assets/css/slick.css') }}"/>
 
         <title>TA LINAN</title>
+        
+        @yield('style')
 
     </head>
 
@@ -31,7 +33,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
         </script>
-        <script src="{{ asset('home-assetsjs/slick.js') }}"></script>
+        <script src="{{ asset('home-assets/js/slick.js') }}"></script>
         <script>
             $('.responsive').slick({
                 dots: true,

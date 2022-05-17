@@ -13,4 +13,13 @@ class Artikel extends Model
         'title',
         'description'
     ];
+
+    protected $appends = [
+        'formatted_created_at'
+    ];
+
+    public function getFormattedCreatedAtAttribute()
+    {
+        return $this->created_at->format('j, F Y h:i:s');
+    }
 }
