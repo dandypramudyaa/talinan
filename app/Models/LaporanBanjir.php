@@ -16,5 +16,7 @@ class LaporanBanjir extends Model
         'jumlah_korban_luka_berat',
         'jumlah_korban_luka_ringan',
         'foto',
+        'user_id',
+        'status'
     ];
 }

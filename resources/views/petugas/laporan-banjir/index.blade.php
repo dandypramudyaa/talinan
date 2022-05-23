@@ -24,10 +24,6 @@
         </div>
     @endif
 
-    {{-- <section class="section">
-        <a href="{{ route('admins.artikel.create') }}" class="btn btn-primary mb-4">Buat Artikel</a>
-    </section> --}}
-
     <section class="section">
         <div class="row">
             <div class="col-sm-12">
@@ -36,7 +32,7 @@
                         <div class="card-title-block">
                             <h3 class="title">Cari Laporan Info Banjir</h3>
                         </div>
-                        <form action="{{ route('admins.artikel.index') }}" method="GET" style="margin-bottom: 0">
+                        <form action="{{ route('petugas.laporan-banjir.index') }}" method="GET" style="margin-bottom: 0">
                             @csrf
                             <section>
                                 <div class="d-flex flex-row">
@@ -97,10 +93,10 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        <a href="{{ route('admins.laporan-banjir.show', [
+                                                        <a href="{{ route('petugas.laporan-banjir.show', [
                                                             'id' => $laporan->id
                                                         ]) }}" class="btn btn-primary">Detail</a>
-                                                        <a href="{{ route('admins.laporan-banjir.delete', [
+                                                        <a href="{{ route('petugas.laporan-banjir.delete', [
                                                             'id' => $laporan->id
                                                         ]) }}" class="btn btn-danger">Hapus</a>
                                                     </td>

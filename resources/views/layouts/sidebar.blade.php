@@ -13,12 +13,23 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item  @if(!empty($active_page) && $active_page == 'dashboard') active @endif">
-        <a class="nav-link" href="{{ route('admins.dashboard') }}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
-        </a>
-    </li>
+    @if (auth()->user()->roles == 'Admin')
+        <li class="nav-item  @if(!empty($active_page) && $active_page == 'dashboard') active @endif">
+            <a class="nav-link" href="{{ route('admins.dashboard') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+    @endif
+    
+    @if (auth()->user()->roles == 'Petugas')
+        <li class="nav-item  @if(!empty($active_page) && $active_page == 'dashboard') active @endif">
+            <a class="nav-link" href="{{ route('petugas.dashboard') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+    @endif
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -62,7 +73,7 @@
 
     @if (auth()->user()->roles == 'Petugas')
         <li class="nav-item @if(!empty($active_page) && $active_page == 'laporan_banjir') active @endif">
-            <a class="nav-link" href="{{ route('admins.laporan-banjir.index') }}">
+            <a class="nav-link" href="{{ route('petugas.laporan-banjir.index') }}">
                 <i class="fas fa-fw fa-water"></i>
                 <span>Laporan Banjir</span>
             </a>

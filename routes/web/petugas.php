@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Application\Web\Petugas\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Application\Web\Petugas\DashboardController;
+use App\Http\Controllers\Application\Web\Petugas\LaporanBanjirController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::name('laporan-banjir.')->prefix('laporan-banjir')->group(function () {
+    Route::get('/', [LaporanBanjirController::class,'index'])->name('index');
+    Route::get('create',[LaporanBanjirController::class,'create'])->name('create');
+    Route::post('store', [LaporanBanjirController::class,'store'])->name('store');
+    Route::get('{id}/show',[LaporanBanjirController::class,'edit'])->name('show');
+    Route::get('{id}/konfirmasi',[LaporanBanjirController::class,'konfirmasi'])->name('konfirmasi');
+    Route::post('{id}/update', [LaporanBanjirController::class,'update'])->name('update');
+    Route::get('{id}/delete', [LaporanBanjirController::class,'destroy'])->name('delete');
+});

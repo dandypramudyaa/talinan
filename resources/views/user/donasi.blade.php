@@ -84,7 +84,7 @@
                             <div class="box-text" style="padding: 5px;">
                                 Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.
                             </div>
-                            <a href="#" target="_blank">
+                            <a href="{{ route('user.donasi-detail', $donasi->id) }}">
                                 <button type="button" class="btn btn-primary">Donate</button>
                             </a>
                         </div>

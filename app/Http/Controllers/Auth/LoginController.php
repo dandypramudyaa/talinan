@@ -55,7 +55,7 @@ class LoginController extends Controller
             }elseif(auth()->user()->roles == 'Petugas'){
                 return redirect()->route('petugas.dashboard');
             }elseif(auth()->user()->roles == 'User'){
-                return redirect()->route('home');
+                return redirect()->route('user.home');
             }
         }
     }

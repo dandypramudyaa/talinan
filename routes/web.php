@@ -18,7 +18,10 @@ use App\Http\Controllers\Application\Web\Admin\ProfileController;
 
 Route::get('/',  [UserHomeController::class, 'index'])->name('user.home');
 Route::get('/lapor-banjir',  [UserHomeController::class, 'laporBanjir'])->name('user.lapor-banjir');
+Route::post('/store-lapor-banjir', [UserHomeController::class, 'storeLaporanBanjir'])->name('user.store-lapor-banjir');
 Route::get('/donasi',  [UserHomeController::class, 'donasi'])->name('user.donasi');
+Route::get('{id}/donasi',[UserHomeController::class,'donasiDetail'])->name('user.donasi-detail');
+Route::post('{id}/store-donasi', [UserHomeController::class, 'storeDonasi'])->name('user.store-donasi');
 Route::get('/artikel',  [UserHomeController::class, 'article'])->name('user.artikel');
 
 // Route::get('/', function () {

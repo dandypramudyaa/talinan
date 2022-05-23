@@ -34,7 +34,7 @@
                 <div class="card p-4">
                     <div class="card-block">
                         <div class="card-title-block">
-                            <h3 class="title">Cari Laporan Info Banjir</h3>
+                            <h3 class="title">Cari Donasi Bantuan Banjir</h3>
                         </div>
                         <form action="{{ route('admins.donasi-bantuan-banjir.index') }}" method="GET" style="margin-bottom: 0">
                             @csrf

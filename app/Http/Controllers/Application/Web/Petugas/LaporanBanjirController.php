@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Application\Web\Admin;
+namespace App\Http\Controllers\Application\Web\Petugas;
 
 use App\Http\Controllers\Controller;
 use App\User;
@@ -32,7 +32,7 @@ class LaporanBanjirController extends Controller
 
         $laporanBanjir = $laporanBanjir->paginate(20);
 
-        return view('admin.laporan-banjir.index',[
+        return view('petugas.laporan-banjir.index',[
             'laporan_banjir' => $laporanBanjir,
             'search_terms' => [
                 'alamat' => $request->alamat,
@@ -71,7 +71,7 @@ class LaporanBanjirController extends Controller
     {
         $laporan = LaporanBanjir::find($id);
 
-        return view('admin.laporan-banjir.show',[
+        return view('petugas.laporan-banjir.show',[
             'laporan' => $laporan
         ]);
     }
@@ -85,17 +85,7 @@ class LaporanBanjirController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'description' => 'required',
-        ]);
-
-        $artikel = Artikel::find($id);
-        $artikel->title = $request->title;
-        $artikel->description = $request->description;
-        $artikel->save();
-
-        return redirect()->route('admins.artikel.show', $artikel->id)->with('success_message','Berhasil mengubah artikel!');
+        abort(404);
     }
 
     /**
@@ -106,9 +96,24 @@ class LaporanBanjirController extends Controller
      */
     public function destroy($id)
     {
-        $artikel = Artikel::find($id);
-        $artikel->delete();
+        // $artikel = Artikel::find($id);
+        // $artikel->delete();
         
-        return redirect()->route('admins.artikel.index')->with('success_message','Berhasil menghapus artikel!');
+        // return redirect()->route('admins.artikel.index')->with('success_message','Berhasil menghapus artikel!');
+    }
+    
+    /**
+     * Konfirmasi Laporan Banjir
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function konfirmasi($id)
+    {
+        $laporanBanjir = LaporanBanjir::find($id);
+        $laporanBanjir->status = "Terkonfirmasi";
+        $laporanBanjir->save();
+        
+        return redirect()->route('petugas.laporan-banjir.show', $laporanBanjir->id)->with('success_message','Berhasil mengkonfirmasi laporan bencana banjir!');
     }
 }

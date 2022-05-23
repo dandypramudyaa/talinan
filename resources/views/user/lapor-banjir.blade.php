@@ -69,13 +69,24 @@
         </div>
     </div> --}}
 
-    <div class="container" style="margin-bottom: 150px; margin-top: 100px;">
+    <div class="container" style="margin-bottom: 100px; margin-top: 50px;">
         <div class="row">
             
             <div class="col-6 mx-auto p-4 m-5 border-light shadow-sm">
+
+                @if(Session::has('success_message'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ Session::get('success_message') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+                
                 <h3 class="pb-3">Lapor Info Banjir </h3>
                 <div class="form-style">
-                    <form>
+                    <form action="{{ route('user.store-lapor-banjir') }}" method="POST" >
+                        @csrf
                         <div class="form-group pb-3">    
                             <label for="tanggal_bencana">Tanggal Bencana</label>
                             <input type="date" class="form-control" name="tanggal_bencana" id="tanggal_bencana">   
