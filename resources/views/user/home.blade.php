@@ -47,44 +47,24 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="section-2-title">
-                                <h2 class="mb-4">a little of you, precious to us</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam rerum officiis
-                                    accusamus tenetur ab tempora voluptatibus odio aliquam assumenda tempore, possimus
-                                    cumque nam labore harum optio, totam autem eos quasi.</p>
-                                    <a class="nav-link btn-orange" href="#">See More</a>
+                                <h2 class="mb-4">Donasi</h2>
+                                <p>Mari meringankan beban dan bantu teman atau keluarga kita yang sedang terkena musibah bencana banjir.</p>
+                                    <a class="nav-link btn-orange" href="{{ route('user.donasi') }}">Selengkapnya</a>
 
                             </div>
                         </div>
                         <div class="col-md-8">
                             <div class="responsive">
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="{{ asset('home-assets/1.jpeg') }}" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up
-                                            the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Donate Now</a>
+                                @foreach ($donasi_data as $key => $donasi)
+                                    <div class="card" style="width: 18rem;">
+                                        <img class="card-img-top" src="{{ asset('storage/' . $donasi->foto) }}" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $donasi->nama }}</h5>
+                                            <p class="card-text">{{ $donasi->alamat }}</p>
+                                            <a href="{{ route('user.donasi-detail', $donasi->id) }}" class="btn btn-primary">Donasi</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="{{ asset('home-assets/2.jpeg') }}" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up
-                                            the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Donate Now</a>
-                                    </div>
-                                </div>
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="{{ asset('home-assets/3.jpg') }}" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up
-                                            the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Donate Now</a>
-                                    </div>
-                                </div>
-
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -101,43 +81,23 @@
                     <div class="row">
                     <div class="col-md-8">
                             <div class="responsive">
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="{{ asset('home-assets/3.jpg') }}" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up
-                                            the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Donate Now</a>
+                                @foreach ($artikel_data as $key => $artikel)   
+                                    <div class="card" style="width: 18rem;">
+                                        <img class="card-img-top" src="{{ asset('home-assets/1.jpeg') }}" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $artikel->title }}</h5>
+                                            <p class="card-text">{{ $artikel->description }}</p>
+                                            <a href="#" class="btn btn-primary">Lihat Selengkapnya</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="{{ asset('home-assets/3.jpg') }}" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up
-                                            the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Donate Now</a>
-                                    </div>
-                                </div>
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="{{ asset('home-assets/3.jpg') }}" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up
-                                            the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Donate Now</a>
-                                    </div>
-                                </div>
-
+                                @endforeach
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="section-2-title">
-                                <h2 class="mb-4">Our Blog</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam rerum officiis
-                                    accusamus tenetur ab tempora voluptatibus odio aliquam assumenda tempore, possimus
-                                    cumque nam labore harum optio, totam autem eos quasi.</p>
-                                    <a class="nav-link btn-orange" href="#">See More</a>
+                                <h2 class="mb-4">Artikel</h2>
+                                <p>Ikuti berita terbaru tentang bencana banjir disini.</p>
+                                    <a class="nav-link btn-orange" href="{{ route('user.artikel') }}">Selengkapnya</a>
                             </div>
                         </div>
                     </div>
@@ -146,16 +106,15 @@
         </div>
     </div>
 
-    <div class="section-4" style="background-image: url({{ asset('home-assets/donate.jpg') }}); background-size:cover; background-position:center; height:550px">
+    <div class="section-4" style="background-image: url({{ asset('home-assets/misbahul-aulia-j6oZ1Cg8viY-unsplash.jpeg') }}); background-size:cover; background-position:center; height:550px">
         <div class="table">
             <div class="table-cell">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="section-4-title text-center">
-                                <h2 style="color: #fff;">Want To Donate?</h2>
-                                <a class="nav-link btn-orange mt-5" style="width: 200px; margin:auto; display:block" href="#">Become A Member</a>
-
+                                <h2 style="color: #fff;">Ada Bencana Banjir ?</h2>
+                                <a class="nav-link btn-orange mt-5" style="width: 200px; margin:auto; display:block" href="{{ route('user.lapor-banjir') }}">Lapor Disini</a>
                             </div>
                         </div>
                     </div>

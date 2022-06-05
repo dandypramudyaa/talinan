@@ -138,6 +138,14 @@
                                 <input type="text" readonly class="form-control-plaintext" id="anggota_keluarga_yang_terkena_penyakit" value="{{ $donasi->anggota_keluarga_yang_terkena_penyakit }}">
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Foto</label>
+                            <div class="col-sm-9">
+                                @if(!empty($donasi->foto))
+                                    <img width="200" src="{{ asset('storage/' . $donasi->foto) }}">
+                                @endif
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

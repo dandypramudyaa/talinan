@@ -21,9 +21,12 @@ class UserHomeController extends Controller
      */
     public function index()
     {
-        // $user = auth()->user();
+        $artikelData = Artikel::orderBy('created_at', 'desc')->limit(3)->get();
+        $donasiData = DonasiBantuanBanjir::orderBy('created_at', 'desc')->limit(3)->get();
+        
         return view('user.home', [
-            // 'user' => $user
+            'artikel_data' => $artikelData,
+            'donasi_data' => $donasiData
         ]);
     }
 
@@ -53,8 +56,14 @@ class UserHomeController extends Controller
             'alamat_bencana' => 'required',
             'jml_rumah_terkena_banjir' => 'required',
             'jml_korban_luka_berat' => 'required',
-            'jml_korban_luka_ringan' => 'required'
+            'jml_korban_luka_ringan' => 'required',
+            'foto' => 'required'
         ]);
+
+        if ($request->hasFile('foto')) {
+            $name = $request->file('foto')->getClientOriginalName();
+            $path = $request->file('foto')->store('public/laporan-banjir');
+        }
 
         $laporanBanjir = new LaporanBanjir();
         $laporanBanjir->user_id = auth()->user()->id;
@@ -65,6 +74,7 @@ class UserHomeController extends Controller
         $laporanBanjir->jumlah_korban_luka_berat = $request->jml_korban_luka_berat;
         $laporanBanjir->jumlah_korban_luka_ringan = $request->jml_korban_luka_ringan;
         $laporanBanjir->status = 'Menunggu Konfirmasi';
+        $laporanBanjir->foto = str_replace('public/', '', $path);
         $laporanBanjir->save();
 
         return redirect()->route('user.lapor-banjir')->with('success_message','Terima kasih anda telah melaporkan bencana banjir! Tim kami akan melakukan pengecekan untuk laporan tersebut');

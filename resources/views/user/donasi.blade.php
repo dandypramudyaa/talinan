@@ -74,9 +74,11 @@
             @foreach ($donasi_rows as $donasi)    
                 <div class="col-lg-4 col-12 text-center mt-4">
                     <div class="box-column" style="border-style: solid; border-radius: 10px;">
-                        <div class="box-header box-header-twitter">
-                            <i class="fa fa-twitter fa-3x" aria-hidden="true"></i>
-                        </div>
+                        @if(!empty($donasi->foto))
+                            <img height="200" style="width: 100%" src="{{ asset('storage/' . $donasi->foto) }}">
+                        @else
+                            <div style="height: 200px" class="box-header box-header-twitter"></div>
+                        @endif
                         <div class="box-bottom">
                             <div class="box-title twitter-title">
                                 {{ $donasi->nama }}

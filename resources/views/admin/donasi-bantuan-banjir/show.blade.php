@@ -34,7 +34,7 @@
                         </div>
                         <form class="user" action="{{ route('admins.donasi-bantuan-banjir.update', [
                                 'id' => $donasi->id
-                            ]) }}" method="POST">
+                            ]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             @if ($errors->any())
@@ -62,6 +62,11 @@
                             <div class="form-group">
                                 <label>Alamat</label>
                                 <textarea name="alamat" class="form-control" cols="30" rows="5" placeholder="Alamat">{{ $donasi->alamat }}</textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">Foto</label>
+                                <input class="form-control" type="file" name="image" id="formFile">
                             </div>
 
                             <div class="form-group">

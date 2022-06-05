@@ -85,7 +85,7 @@
                 
                 <h3 class="pb-3">Lapor Info Banjir </h3>
                 <div class="form-style">
-                    <form action="{{ route('user.store-lapor-banjir') }}" method="POST" >
+                    <form action="{{ route('user.store-lapor-banjir') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group pb-3">    
                             <label for="tanggal_bencana">Tanggal Bencana</label>
@@ -110,6 +110,10 @@
                         <div class="form-group pb-3">  
                             <label for="jml_korban_luka_ringan">Jumlah Korban Luka Ringan</label> 
                             <input type="number" class="form-control" name="jml_korban_luka_ringan" id="jml_korban_luka_ringan" placeholder="Masukkan Jumlah Korban Luka Ringan">
+                        </div>
+                        <div class="form-group pb-3">  
+                            <label for="foto">Foto</label> 
+                            <input type="file" class="form-control" name="foto" id="foto">
                         </div>
                         <div class="pb-2">
                             <button type="submit" class="btn btn-dark w-100 font-weight-bold mt-2">Kirim</button>

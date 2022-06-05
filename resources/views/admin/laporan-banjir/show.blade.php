@@ -60,6 +60,9 @@
                             <label for="status">Status</label>
                             <input type="text" class="form-control" id="status" placeholder="Judul" name="status" value="{{ $laporan->status }}" readonly>
                         </div>
+                        <div class="form-group">
+                            <img src="{{ asset('storage/' . $laporan->foto) }}" width="600">
+                        </div>
                         <a href="{{ route('admins.laporan-banjir.index') }}">
                             <button class="btn btn-primary w-4 float-right">
                                 Kembali

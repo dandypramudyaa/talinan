@@ -74,12 +74,16 @@ class DonasiBantuanBanjirController extends Controller
             'anggota_keluarga_terkena_penyakit' => 'required',
         ]);
 
+        $name = $request->file('image')->getClientOriginalName();
+        $path = $request->file('image')->store('public/donasi');
+
         $donasiBantuanBanjir = new DonasiBantuanBanjir();
         $donasiBantuanBanjir->user_id = auth()->user()->id;
         $donasiBantuanBanjir->nama = $request->nama;
         $donasiBantuanBanjir->tanggal_lahir = $request->tanggal_lahir;
         $donasiBantuanBanjir->nomor_nik = $request->nik;
         $donasiBantuanBanjir->alamat = $request->alamat;
+        $donasiBantuanBanjir->foto = str_replace('public/', '', $path);
         $donasiBantuanBanjir->jumlah_anggota_keluarga = $request->jumlah_art;
         $donasiBantuanBanjir->kerusakan_rumah = $request->kerusakan_rumah;
         $donasiBantuanBanjir->penghasilan = $request->penghasilan;
@@ -124,12 +128,21 @@ class DonasiBantuanBanjirController extends Controller
             'anggota_keluarga_terkena_penyakit' => 'required',
         ]);
 
-        $donasiBantuanBanjir = new DonasiBantuanBanjir();
+        $donasiBantuanBanjir = DonasiBantuanBanjir::where('id', $id)->first();
+
+        if ($request->hasFile('image')) {
+            $name = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->store('public/donasi');
+        }
+
         $donasiBantuanBanjir->user_id = auth()->user()->id;
         $donasiBantuanBanjir->nama = $request->nama;
         $donasiBantuanBanjir->tanggal_lahir = $request->tanggal_lahir;
         $donasiBantuanBanjir->nomor_nik = $request->nik;
         $donasiBantuanBanjir->alamat = $request->alamat;
+        if ($request->hasFile('image')) {
+            $donasiBantuanBanjir->foto = str_replace('public/', '', $path);
+        }
         $donasiBantuanBanjir->jumlah_anggota_keluarga = $request->jumlah_art;
         $donasiBantuanBanjir->kerusakan_rumah = $request->kerusakan_rumah;
         $donasiBantuanBanjir->penghasilan = $request->penghasilan;

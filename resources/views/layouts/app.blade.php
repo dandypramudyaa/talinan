@@ -208,7 +208,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->first_name }} {{auth()->user()->last_name}}</span>
                                 @if(!empty(auth()->user()->profile_pic_name))
-                                    <img class="img-profile rounded-circle" src="{{ asset('storage/' . $user->profile_pic_name) }}">
+                                    <img class="img-profile rounded-circle" src="{{ asset('storage/' . auth()->user()->profile_pic_name) }}">
                                 @endif
                             </a>
                             <!-- Dropdown - User Information -->

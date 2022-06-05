@@ -87,6 +87,9 @@
                                 <label for="status">Status</label>
                                 <input type="text" class="form-control" id="status" placeholder="Judul" name="status" value="{{ $laporan->status }}" readonly>
                             </div>
+                            <div class="form-group">
+                                <img src="{{ asset('storage/' . $laporan->foto) }}" width="600">
+                            </div>
                             {{-- <button type="submit" class="btn btn-primary btn-user btn-block">
                                 Ubah
                             </button> --}}
