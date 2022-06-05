@@ -52,16 +52,16 @@
                         Menu
                     </h6>
                     <p>
-                        <a href="#!" class="text-reset">Home</a>
+                        <a href="{{ route('user.home') }}" class="text-reset">Home</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset">About</a>
+                        <a href="{{ route('user.lapor-banjir') }}" class="text-reset">Lapor Banjir</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset">Donation</a>
+                        <a href="{{ route('user.donasi') }}" class="text-reset">Donasi</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset">Article</a>
+                        <a href="{{ route('user.artikel') }}" class="text-reset">Artikel</a>
                     </p>
                 </div>
                 <!-- Grid column -->

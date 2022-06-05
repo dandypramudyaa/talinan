@@ -67,7 +67,7 @@
                             <div class="col-sm-6 col-md-8">
                                 <h4 class="mt-2">{{ $article->title }}</h4>
                                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                                <a href="#">More ... </a>
+                                <a href="{{ route('user.detail-artikel', $article->id) }}">Selengkapnya</a>
                                 <section style="margin-top: 10px;">
                                     {{ $article->formatted_created_at }}
                                 </section>

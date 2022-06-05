@@ -23,7 +23,7 @@ class UserHomeController extends Controller
     {
         $artikelData = Artikel::orderBy('created_at', 'desc')->limit(3)->get();
         $donasiData = DonasiBantuanBanjir::orderBy('created_at', 'desc')->limit(3)->get();
-        
+
         return view('user.home', [
             'artikel_data' => $artikelData,
             'donasi_data' => $donasiData
@@ -106,6 +106,10 @@ class UserHomeController extends Controller
     {
         $user = auth()->user();
 
+        if(empty($user)) {
+            return redirect()->route('login');
+        }
+
         $donasi = DonasiBantuanBanjir::find($id);
 
         $paraDonatur = DonasiBantuanBanjirUser::where('donasi_id', $id)->orderBy('created_at', 'desc')->get();
@@ -160,6 +164,23 @@ class UserHomeController extends Controller
         return view('user.article', [
             'user' => $user,
             'articles' => $artikel
+        ]);
+    }
+    
+    /**
+     * Article page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function detailArtikel($id)
+    {
+        $user = auth()->user();
+
+        $artikel = Artikel::where('id', $id)->first();
+
+        return view('user.article-detail', [
+            'user' => $user,
+            'artikel' => $artikel
         ]);
     }
 }

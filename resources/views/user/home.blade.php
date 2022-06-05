@@ -13,7 +13,7 @@
                                 <p class="mb-4">Talinan sebuah organisasi yang bertujuan untuk membantu masyarakat yang
                                     sedang mengalamai masa sulit. Kami hadir untuk membantu dan menjadi jembatan untuk
                                     uluran tangan kalian kepada korban yang mengalami masa sulit</p>
-                                <a href="#" class="btn-orange-hero">Donasi Sekarang!</a>
+                                <a href="{{ route('user.donasi') }}" class="btn-orange-hero">Donasi Sekarang!</a>
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $artikel->title }}</h5>
                                             <p class="card-text">{{ $artikel->description }}</p>
-                                            <a href="#" class="btn btn-primary">Lihat Selengkapnya</a>
+                                            <a href="{{ route('user.detail-artikel', $artikel->id) }}" class="btn btn-primary">Selengkapnya</a>
                                         </div>
                                     </div>
                                 @endforeach
