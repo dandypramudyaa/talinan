@@ -17,6 +17,7 @@ use App\Http\Controllers\Application\Web\Admin\ProfileController;
 */
 
 Route::get('/',  [UserHomeController::class, 'index'])->name('user.home');
+Route::get('/home',  [UserHomeController::class, 'index'])->name('home');
 Route::get('/lapor-banjir',  [UserHomeController::class, 'laporBanjir'])->name('user.lapor-banjir');
 Route::post('/store-lapor-banjir', [UserHomeController::class, 'storeLaporanBanjir'])->name('user.store-lapor-banjir');
 Route::get('/donasi',  [UserHomeController::class, 'donasi'])->name('user.donasi');
