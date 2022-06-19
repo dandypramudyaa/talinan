@@ -30,7 +30,7 @@
                 <div class="card p-4">
                     <div class="card-block">
                         <div class="card-title-block mb-4">
-                            <h4 class="title">Form Ubah Donasi Bantuan Banjir</h4>
+                            <h4 class="title">Form Donasi Bantuan Banjir</h4>
                         </div>
                         <form class="user" action="{{ route('admins.donasi-bantuan-banjir.update', [
                                 'id' => $donasi->id
@@ -47,119 +47,88 @@
                                 </div>
                             @endif
 
-                            <div class="form-group">
-                                <label>Nama Sesuai KTP</label>
-                                <input type="text" class="form-control" placeholder="Nama" name="nama" value="{{ $donasi->nama }}">
-                            </div>
-                            <div class="form-group">
-                                <label>Tanggal Lahir</label>
-                                <input type="date" class="form-control" placeholder="Tanggal Lahir" name="tanggal_lahir" value="{{ $donasi->tanggal_lahir }}">
-                            </div>
-                            <div class="form-group">
-                                <label>NIK</label>
-                                <input type="text" class="form-control" placeholder="NIK" name="nik" value="{{ $donasi->nomor_nik }}">
-                            </div>
-                            <div class="form-group">
-                                <label>Alamat</label>
-                                <textarea name="alamat" class="form-control" cols="30" rows="5" placeholder="Alamat">{{ $donasi->alamat }}</textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="formFile" class="form-label">Foto</label>
-                                <input class="form-control" type="file" name="image" id="formFile">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Jumlah Anggota Keluarga (ART)</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="jumlah_art" id="art_ringan" value="Ringan (1-4 Anggota Keluarga)" @if($donasi->jumlah_anggota_keluarga == 'Ringan (1-4 Anggota Keluarga)') checked @endif>
-                                    <label class="form-check-label" for="art_ringan">
-                                        Ringan (1-4 Anggota Keluarga)
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="jumlah_art" id="art_sedang" value="Sedang (4-7 Anggota Keluarga)" @if($donasi->jumlah_anggota_keluarga == 'Sedang (4-7 Anggota Keluarga)') checked @endif>
-                                    <label class="form-check-label" for="art_sedang">
-                                        Sedang (4-7 Anggota Keluarga)
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="jumlah_art" id="art_berat" value="Berat (7 atau Lebih Anggota Keluarga)" @if($donasi->jumlah_anggota_keluarga == 'Berat (7 atau Lebih Anggota Keluarga)') checked @endif>
-                                    <label class="form-check-label" for="art_berat">
-                                        Berat (7 atau Lebih Anggota Keluarga)
-                                    </label>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Nama</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value=": {{ $donasi->nama }}">
                                 </div>
                             </div>
-                            
-                            <div class="form-group">
-                                <label>Kerusakan Rumah</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="kerusakan_rumah" id="kerusakan_ringan" value="Ringan (bagian depan rumah)" @if($donasi->kerusakan_rumah == 'Ringan (Bagian depan rumah)') checked @endif>
-                                    <label class="form-check-label" for="kerusakan_ringan">
-                                        Ringan (Bagian depan rumah)
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="kerusakan_rumah" id="kerusakan_sedang" value="Sedang (air masuk ke rumah)" @if($donasi->kerusakan_rumah == 'Sedang (air masuk ke rumah)') checked @endif>
-                                    <label class="form-check-label" for="kerusakan_sedang">
-                                        Sedang (Air masuk ke rumah)
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="kerusakan_rumah" id="kerusakan_berat" value="Berat (Rumah Terendam Air)" @if($donasi->kerusakan_rumah == 'Berat (Rumah Terendam Air)') checked @endif>
-                                    <label class="form-check-label" for="kerusakan_berat">
-                                        Berat (Rumah Terendam Air)
-                                    </label>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">NIK</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value=": {{ $donasi->nik }}">
                                 </div>
                             </div>
-                            
-                            <div class="form-group">
-                                <label>Penghasilan</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="penghasilan" id="penghasilan_ringan" value="Ringan (5jt Lebih)" @if($donasi->penghasilan == 'Ringan (5jt Lebih)') checked @endif>
-                                    <label class="form-check-label" for="penghasilan_ringan">
-                                        Ringan (5jt Lebih)
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="penghasilan" id="penghasilan_sedang" value="Sedang (3-5jt)" @if($donasi->penghasilan == 'Sedang (3-5jt)') checked @endif>
-                                    <label class="form-check-label" for="penghasilan_sedang">
-                                        Sedang (3-5jt)
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="penghasilan" id="penghasilan_berat" value="Berat (500rb-3jt)" @if($donasi->penghasilan == 'Berat (500rb-3jt)') checked @endif>
-                                    <label class="form-check-label" for="penghasilan_berat">
-                                        Berat (500rb-3jt)
-                                    </label>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">No KK</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value=": {{ $donasi->no_kk }}">
                                 </div>
                             </div>
-                            
-                            <div class="form-group">
-                                <label>Anggota Keluarga yang terkena penyakit</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="anggota_keluarga_terkena_penyakit" id="terkena_penyakit_ringan" value="Ringan (Penyakit Biasa)" @if($donasi->anggota_keluarga_yang_terkena_penyakit == 'Ringan (Penyakit Biasa)') checked @endif>
-                                    <label class="form-check-label" for="terkena_penyakit_ringan">
-                                        Ringan (Penyakit Biasa)
-                                    </label>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">No Rekening</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value=": {{ $donasi->no_rekening }}">
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="anggota_keluarga_terkena_penyakit" id="terkena_penyakit_sedang" value="Sedang (Rawat Jalan)" @if($donasi->anggota_keluarga_yang_terkena_penyakit == 'Sedang (Rawat Jalan)') checked @endif>
-                                    <label class="form-check-label" for="terkena_penyakit_sedang">
-                                        Sedang (Rawat Jalan)
-                                    </label>
+                            </div>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Nama Bank</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value=": {{ $donasi->nama_bank }}">
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="anggota_keluarga_terkena_penyakit" id="terkena_penyakit_berat" value="Berat (Rawat Inap)" @if($donasi->anggota_keluarga_yang_terkena_penyakit == 'Berat (Rawat Inap)') checked @endif>
-                                    <label class="form-check-label" for="terkena_penyakit_berat">
-                                        Berat (Rawat Inap)
-                                    </label>
+                            </div>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Alamat</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value=": {{ $donasi->alamat }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">No Telepon</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value=": {{ $donasi->no_telepon }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Kerusakan Tempat Tinggal</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value=": {{ $donasi->parah_kerusakan_tempat_tinggal }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Tinggi Banjir</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value=": {{ $donasi->tinggi_banjir }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Jumlah Anggota Keluarga</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value=": {{ $donasi->jumlah_anggota_keluarga }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Korban Jiwa</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value=": {{ $donasi->korban_jiwa }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Anggota Keluarga yang Tekena Penyakit</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value=": {{ $donasi->anggota_keluarga_yang_terkena_penyakit }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Rekomendasi Donasi</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value=": Rp. x.xxx.xxx">
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary btn-user btn-block">
+                            {{-- <button type="submit" class="btn btn-primary btn-user btn-block">
                                 Ubah
-                            </button>
+                            </button> --}}
                         </form>
                     </div>
                 </div>

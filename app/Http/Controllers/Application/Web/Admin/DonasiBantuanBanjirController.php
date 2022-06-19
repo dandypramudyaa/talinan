@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Application\Web\Admin;
 
 use App\Http\Controllers\Controller;
 use App\User;
-use App\Models\DonasiBantuanBanjir;
+use App\Models\DonasiBanjir;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use View;
@@ -24,20 +24,20 @@ class DonasiBantuanBanjirController extends Controller
      */
     public function index(Request $request)
     {
-        $donasiBantuanBanjir = new DonasiBantuanBanjir();
+        $donasiBanjir = new DonasiBanjir();
 
         if(!empty($request->nama)){
-            $donasiBantuanBanjir = $donasiBantuanBanjir->where('nama', 'LIKE', '%'.$request->nama.'%');
+            $donasiBanjir = $donasiBanjir->where('nama', 'LIKE', '%'.$request->nama.'%');
         }
 
         if(!empty($request->alamat)){
-            $donasiBantuanBanjir = $donasiBantuanBanjir->where('alamat', 'LIKE', '%'.$request->alamat.'%');
+            $donasiBanjir = $donasiBanjir->where('alamat', 'LIKE', '%'.$request->alamat.'%');
         }
 
-        $donasiBantuanBanjir = $donasiBantuanBanjir->paginate(20);
+        $donasiBanjir = $donasiBanjir->paginate(20);
 
         return view('admin.donasi-bantuan-banjir.index',[
-            'donasi_bantuan_banjir' => $donasiBantuanBanjir,
+            'donasi_bantuan_banjir' => $donasiBanjir,
             'search_terms' => [
                 'nama' => $request->nama,
                 'alamat' => $request->alamat,
@@ -77,18 +77,18 @@ class DonasiBantuanBanjirController extends Controller
         $name = $request->file('image')->getClientOriginalName();
         $path = $request->file('image')->store('public/donasi');
 
-        $donasiBantuanBanjir = new DonasiBantuanBanjir();
-        $donasiBantuanBanjir->user_id = auth()->user()->id;
-        $donasiBantuanBanjir->nama = $request->nama;
-        $donasiBantuanBanjir->tanggal_lahir = $request->tanggal_lahir;
-        $donasiBantuanBanjir->nomor_nik = $request->nik;
-        $donasiBantuanBanjir->alamat = $request->alamat;
-        $donasiBantuanBanjir->foto = str_replace('public/', '', $path);
-        $donasiBantuanBanjir->jumlah_anggota_keluarga = $request->jumlah_art;
-        $donasiBantuanBanjir->kerusakan_rumah = $request->kerusakan_rumah;
-        $donasiBantuanBanjir->penghasilan = $request->penghasilan;
-        $donasiBantuanBanjir->anggota_keluarga_yang_terkena_penyakit = $request->anggota_keluarga_terkena_penyakit;
-        $donasiBantuanBanjir->save();
+        $donasiBanjir = new DonasiBanjir();
+        $donasiBanjir->user_id = auth()->user()->id;
+        $donasiBanjir->nama = $request->nama;
+        $donasiBanjir->tanggal_lahir = $request->tanggal_lahir;
+        $donasiBanjir->nomor_nik = $request->nik;
+        $donasiBanjir->alamat = $request->alamat;
+        $donasiBanjir->foto = str_replace('public/', '', $path);
+        $donasiBanjir->jumlah_anggota_keluarga = $request->jumlah_art;
+        $donasiBanjir->kerusakan_rumah = $request->kerusakan_rumah;
+        $donasiBanjir->penghasilan = $request->penghasilan;
+        $donasiBanjir->anggota_keluarga_yang_terkena_penyakit = $request->anggota_keluarga_terkena_penyakit;
+        $donasiBanjir->save();
 
         return redirect()->route('admins.donasi-bantuan-banjir.index')->with('success_message','Berhasil membuat donasi bantuan banjir!');
     }
@@ -101,7 +101,7 @@ class DonasiBantuanBanjirController extends Controller
      */
     public function edit($id)
     {
-        $donasi = DonasiBantuanBanjir::find($id);
+        $donasi = DonasiBanjir::find($id);
 
         return view('admin.donasi-bantuan-banjir.show',[
             'donasi' => $donasi
@@ -128,28 +128,28 @@ class DonasiBantuanBanjirController extends Controller
             'anggota_keluarga_terkena_penyakit' => 'required',
         ]);
 
-        $donasiBantuanBanjir = DonasiBantuanBanjir::where('id', $id)->first();
+        $donasiBanjir = DonasiBanjir::where('id', $id)->first();
 
         if ($request->hasFile('image')) {
             $name = $request->file('image')->getClientOriginalName();
             $path = $request->file('image')->store('public/donasi');
         }
 
-        $donasiBantuanBanjir->user_id = auth()->user()->id;
-        $donasiBantuanBanjir->nama = $request->nama;
-        $donasiBantuanBanjir->tanggal_lahir = $request->tanggal_lahir;
-        $donasiBantuanBanjir->nomor_nik = $request->nik;
-        $donasiBantuanBanjir->alamat = $request->alamat;
+        $donasiBanjir->user_id = auth()->user()->id;
+        $donasiBanjir->nama = $request->nama;
+        $donasiBanjir->tanggal_lahir = $request->tanggal_lahir;
+        $donasiBanjir->nomor_nik = $request->nik;
+        $donasiBanjir->alamat = $request->alamat;
         if ($request->hasFile('image')) {
-            $donasiBantuanBanjir->foto = str_replace('public/', '', $path);
+            $donasiBanjir->foto = str_replace('public/', '', $path);
         }
-        $donasiBantuanBanjir->jumlah_anggota_keluarga = $request->jumlah_art;
-        $donasiBantuanBanjir->kerusakan_rumah = $request->kerusakan_rumah;
-        $donasiBantuanBanjir->penghasilan = $request->penghasilan;
-        $donasiBantuanBanjir->anggota_keluarga_yang_terkena_penyakit = $request->anggota_keluarga_terkena_penyakit;
-        $donasiBantuanBanjir->save();
+        $donasiBanjir->jumlah_anggota_keluarga = $request->jumlah_art;
+        $donasiBanjir->kerusakan_rumah = $request->kerusakan_rumah;
+        $donasiBanjir->penghasilan = $request->penghasilan;
+        $donasiBanjir->anggota_keluarga_yang_terkena_penyakit = $request->anggota_keluarga_terkena_penyakit;
+        $donasiBanjir->save();
 
-        return redirect()->route('admins.donasi-bantuan-banjir.show', $donasiBantuanBanjir->id)->with('success_message','Berhasil mengubah donasi bantuan banjir!');
+        return redirect()->route('admins.donasi-bantuan-banjir.show', $donasiBanjir->id)->with('success_message','Berhasil mengubah donasi bantuan banjir!');
     }
 
     /**
@@ -160,7 +160,7 @@ class DonasiBantuanBanjirController extends Controller
      */
     public function destroy($id)
     {
-        $donasi = DonasiBantuanBanjir::find($id);
+        $donasi = DonasiBanjir::find($id);
         $donasi->delete();
         
         return redirect()->route('admins.donasi-bantuan-banjir.index')->with('success_message','Berhasil menghapus donasi bantuan banjir!');

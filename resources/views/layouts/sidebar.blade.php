@@ -78,6 +78,12 @@
                 <span>Laporan Banjir</span>
             </a>
         </li>
+        <li class="nav-item @if(!empty($active_page) && $active_page == 'donasi') active @endif">
+            <a class="nav-link" href="{{ route('petugas.donasi-bantuan-banjir.index') }}">
+                <i class="fas fa-fw fa-water"></i>
+                <span>Donasi</span>
+            </a>
+        </li>
     @endif
 
 </ul>

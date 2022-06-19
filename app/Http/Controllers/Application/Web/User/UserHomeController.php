@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Artikel;
-use App\Models\DonasiBantuanBanjir;
+use App\Models\DonasiBanjir;
 use App\Models\DonasiBantuanBanjirUser;
 use App\Models\LaporanBanjir;
 use View;
@@ -22,7 +22,7 @@ class UserHomeController extends Controller
     public function index()
     {
         $artikelData = Artikel::orderBy('created_at', 'desc')->limit(3)->get();
-        $donasiData = DonasiBantuanBanjir::orderBy('created_at', 'desc')->limit(3)->get();
+        $donasiData = DonasiBanjir::orderBy('created_at', 'desc')->limit(3)->get();
 
         return view('user.home', [
             'artikel_data' => $artikelData,
@@ -89,7 +89,7 @@ class UserHomeController extends Controller
     {
         $user = auth()->user();
 
-        $donasiRows = DonasiBantuanBanjir::orderBy('created_at', 'desc')->get();
+        $donasiRows = DonasiBanjir::orderBy('created_at', 'desc')->get();
 
         return view('user.donasi', [
             'user' => $user,
@@ -110,7 +110,7 @@ class UserHomeController extends Controller
             return redirect()->route('login');
         }
 
-        $donasi = DonasiBantuanBanjir::find($id);
+        $donasi = DonasiBanjir::find($id);
 
         $paraDonatur = DonasiBantuanBanjirUser::where('donasi_id', $id)->orderBy('created_at', 'desc')->get();
 

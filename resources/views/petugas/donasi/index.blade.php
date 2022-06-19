@@ -3,7 +3,6 @@
 @section('content')
     <div class="title-block">
         <h1 class="title">Donasi Bantuan Banjir</h1>
-        {{-- <p class='title-description'>Manage users who will have be able to control all aspects of the application.</p> --}}
     </div>
 
     @if(Session::has('success_message'))
@@ -24,9 +23,9 @@
         </div>
     @endif
 
-    {{-- <section class="section mt-4">
-        <a href="{{ route('admins.donasi-bantuan-banjir.create') }}" class="btn btn-primary mb-4">Buat Donasi Bantuan Banjir</a>
-    </section> --}}
+    <section class="section mt-4">
+        <a href="{{ route('petugas.donasi-bantuan-banjir.create') }}" class="btn btn-primary mb-4">Buat Donasi Bantuan Banjir</a>
+    </section>
 
     <section class="section">
         <div class="row">
@@ -36,8 +35,7 @@
                         <div class="card-title-block">
                             <h3 class="title">Cari Donasi Bantuan Banjir</h3>
                         </div>
-                        <form action="{{ route('admins.donasi-bantuan-banjir.index') }}" method="GET" style="margin-bottom: 0">
-                            @csrf
+                        <form action="{{ route('petugas.donasi-bantuan-banjir.index') }}" method="GET" style="margin-bottom: 0">
                             <section>
                                 <div class="d-flex flex-row">
                                     <div style="margin-right: 20px; width: 100%">
@@ -81,7 +79,6 @@
                                             <th>NIK</th>
                                             <th>NO KK</th>
                                             <th>Alamat</th>
-                                            <th>Status</th>
                                             <th>Options</th>
                                         </tr>
                                     </thead>
@@ -97,14 +94,13 @@
                                                     <td>{{ $bantuan->nik }}</td>
                                                     <td>{{ $bantuan->no_kk }}</td>
                                                     <td>{{ $bantuan->alamat }}</td>
-                                                    <td>{{ $bantuan->status }}</td>
                                                     <td>
-                                                        <a href="{{ route('admins.donasi-bantuan-banjir.show', [
+                                                        <a href="{{ route('petugas.donasi-bantuan-banjir.show', [
                                                             'id' => $bantuan->id
                                                         ]) }}" class="btn btn-primary">Detail</a>
-                                                        {{-- <a href="{{ route('admins.donasi-bantuan-banjir.delete', [
+                                                        <a href="{{ route('petugas.donasi-bantuan-banjir.delete', [
                                                             'id' => $bantuan->id
-                                                        ]) }}" class="btn btn-danger">Hapus</a> --}}
+                                                        ]) }}" class="btn btn-danger">Hapus</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

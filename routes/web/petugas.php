@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Application\Web\Petugas\DashboardController;
 use App\Http\Controllers\Application\Web\Petugas\LaporanBanjirController;
+use App\Http\Controllers\Application\Web\Petugas\DonasiBantuanBanjirController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,13 @@ Route::name('laporan-banjir.')->prefix('laporan-banjir')->group(function () {
     Route::get('{id}/konfirmasi',[LaporanBanjirController::class,'konfirmasi'])->name('konfirmasi');
     Route::post('{id}/update', [LaporanBanjirController::class,'update'])->name('update');
     Route::get('{id}/delete', [LaporanBanjirController::class,'destroy'])->name('delete');
+});
+
+Route::name('donasi-bantuan-banjir.')->prefix('donasi-bantuan-banjir')->group(function () {
+    Route::get('/', [DonasiBantuanBanjirController::class,'index'])->name('index');
+    Route::get('create',[DonasiBantuanBanjirController::class,'create'])->name('create');
+    Route::post('store', [DonasiBantuanBanjirController::class,'store'])->name('store');
+    Route::get('{id}/show',[DonasiBantuanBanjirController::class,'edit'])->name('show');
+    Route::post('{id}/update', [DonasiBantuanBanjirController::class,'update'])->name('update');
+    Route::get('{id}/delete', [DonasiBantuanBanjirController::class,'destroy'])->name('delete');
 });
