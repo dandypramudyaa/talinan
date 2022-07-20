@@ -59,9 +59,9 @@
                                     {{-- <div class="text-center">
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                                     </div> --}}
-                                    <div class="text-center">
+                                    {{-- <div class="text-center">
                                         You don't have account? <a class="small" href="{{ route('register') }}">Register Here!</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
