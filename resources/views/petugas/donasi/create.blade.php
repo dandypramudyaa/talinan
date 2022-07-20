@@ -65,7 +65,7 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="parah_kerusakan_tempat_tinggal" id="parah_kerusakan_tempat_tinggal_ringan" value="ringan">
                                     <label class="form-check-label" for="parah_kerusakan_tempat_tinggal_ringan">
-                                        Akses jalan tertutup
+                                        Halaman Depan
                                     </label>
                                 </div>
                                 <div class="form-check">

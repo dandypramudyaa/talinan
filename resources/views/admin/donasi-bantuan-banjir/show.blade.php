@@ -92,43 +92,78 @@
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-2 col-form-label">Kerusakan Tempat Tinggal</label>
                                 <div class="col-sm-10">
-                                    <input type="text" readonly class="form-control-plaintext" value=": {{ $donasi->parah_kerusakan_tempat_tinggal }}">
+                                    <input type="text" readonly class="form-control-plaintext" value=": {{ ucwords($donasi->parah_kerusakan_tempat_tinggal) }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-2 col-form-label">Tinggi Banjir</label>
                                 <div class="col-sm-10">
-                                    <input type="text" readonly class="form-control-plaintext" value=": {{ $donasi->tinggi_banjir }}">
+                                    <input type="text" readonly class="form-control-plaintext" value=": {{ ucwords($donasi->tinggi_banjir) }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-2 col-form-label">Jumlah Anggota Keluarga</label>
                                 <div class="col-sm-10">
-                                    <input type="text" readonly class="form-control-plaintext" value=": {{ $donasi->jumlah_anggota_keluarga }}">
+                                    <input type="text" readonly class="form-control-plaintext" value=": {{ ucwords($donasi->jumlah_anggota_keluarga) }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-2 col-form-label">Korban Jiwa</label>
                                 <div class="col-sm-10">
-                                    <input type="text" readonly class="form-control-plaintext" value=": {{ $donasi->korban_jiwa }}">
+                                    <input type="text" readonly class="form-control-plaintext" value=": {{ ucwords($donasi->korban_jiwa) }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-2 col-form-label">Anggota Keluarga yang Tekena Penyakit</label>
                                 <div class="col-sm-10">
-                                    <input type="text" readonly class="form-control-plaintext" value=": {{ $donasi->anggota_keluarga_yang_terkena_penyakit }}">
+                                    <input type="text" readonly class="form-control-plaintext" value=": {{ ucwords($donasi->anggota_keluarga_yang_terkena_penyakit) }}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="staticEmail" class="col-sm-2 col-form-label">Rekomendasi Donasi</label>
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Hasil Penilaian</label>
                                 <div class="col-sm-10">
-                                    <input type="text" readonly class="form-control-plaintext" value=": Rp. x.xxx.xxx">
+                                    <input type="text" readonly class="form-control-plaintext" value=": {{ $donasi->nilai_akhir }}">
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Dana Pemerintah</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value=": Rp. 15.000.000">
+                                </div>
+                            </div>
+                            @php
+                                setlocale(LC_MONETARY,"en_US");
+                                $moneyFormat = number_format(15000000 * $donasi->nilai_akhir, 2);
+                            @endphp
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Rekomendasi Donasi</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value=": Rp. {{ $moneyFormat }}">
+                                </div>
+                            </div>
+                            @if ($donasi->status == 'Menunggu Konfirmasi Admin')
+                                <div class="form-group row">
+                                    <label for="staticEmail" class="col-sm-2 col-form-label">Jumlah Donasi yang Diberikan</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="jumlah_donasi">
+                                    </div>
+                                </div>
 
-                            {{-- <button type="submit" class="btn btn-primary btn-user btn-block">
-                                Ubah
-                            </button> --}}
+                                <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    Ubah
+                                </button>
+                            @else
+                                <div class="form-group row">
+                                    <label for="staticEmail" class="col-sm-2 col-form-label">Jumlah Donasi yang Diberikan</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" readonly class="form-control-plaintext" value=": Rp. {{ number_format($donasi->jumlah_yang_diberikan_admin, 2) }}">
+                                    </div>
+                                </div>
+
+                                {{-- <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    Ubah
+                                </button> --}}
+                            @endif
                         </form>
                     </div>
                 </div>

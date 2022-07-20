@@ -26,5 +26,14 @@ class DonasiBanjir extends Model
 
         'status',
         'jumlah_yang_diberikan_admin',
+
+        'rekomendasi',
+        'nilai_parah_kerusakan_tempat_tinggal',
+        'nilai_tinggi_banjir',
+        'nilai_jumlah_anggota_keluarga',
+        'nilai_korban_jiwa',
+        'nilai_anggota_keluarga_yang_terkena_penyakit',
+        'total_hasil',
+        'nilai_akhir',
     ];
 }

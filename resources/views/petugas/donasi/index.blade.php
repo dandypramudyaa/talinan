@@ -79,6 +79,8 @@
                                             <th>NIK</th>
                                             <th>NO KK</th>
                                             <th>Alamat</th>
+                                            <th>Nilai</th>
+                                            <th>Prioritas</th>
                                             <th>Options</th>
                                         </tr>
                                     </thead>
@@ -88,12 +90,17 @@
                                                 <td colspan="5">Tidak ada data donasi bantuan banjir.</td>
                                             </tr>
                                         @else 
-                                            @foreach($donasi_bantuan_banjir as $bantuan)
+                                            @foreach($donasi_bantuan_banjir as $index=>$bantuan)
                                                 <tr>
                                                     <td>{{ $bantuan->nama }}</td>
                                                     <td>{{ $bantuan->nik }}</td>
                                                     <td>{{ $bantuan->no_kk }}</td>
                                                     <td>{{ $bantuan->alamat }}</td>
+                                                    <td>{{ $bantuan->nilai_akhir }}</td>
+                                                    <td>
+                                                        {{-- {{ $donasi_bantuan_banjir->currentPage() }} --}}
+                                                        {{ (20 * ($donasi_bantuan_banjir->currentPage() - 1)) + $index + 1 }}
+                                                    </td>
                                                     <td>
                                                         <a href="{{ route('petugas.donasi-bantuan-banjir.show', [
                                                             'id' => $bantuan->id

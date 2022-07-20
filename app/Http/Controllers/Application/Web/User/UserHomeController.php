@@ -21,13 +21,15 @@ class UserHomeController extends Controller
      */
     public function index()
     {
-        $artikelData = Artikel::orderBy('created_at', 'desc')->limit(3)->get();
-        $donasiData = DonasiBanjir::orderBy('created_at', 'desc')->limit(3)->get();
+        // $artikelData = Artikel::orderBy('created_at', 'desc')->limit(3)->get();
+        // $donasiData = DonasiBanjir::orderBy('created_at', 'desc')->limit(3)->get();
 
-        return view('user.home', [
-            'artikel_data' => $artikelData,
-            'donasi_data' => $donasiData
-        ]);
+        // return view('user.home', [
+        //     'artikel_data' => $artikelData,
+        //     'donasi_data' => $donasiData
+        // ]);
+
+        return redirect()->route('login');
     }
 
     public function laporBanjir()

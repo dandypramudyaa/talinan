@@ -39,45 +39,45 @@
         Menu
     </div>
     @if (auth()->user()->roles == 'Admin')
-        <li class="nav-item @if(!empty($active_page) && $active_page == 'laporan_banjir') active @endif">
+        {{-- <li class="nav-item @if(!empty($active_page) && $active_page == 'laporan_banjir') active @endif">
             <a class="nav-link" href="{{ route('admins.laporan-banjir.index') }}">
                 <i class="fas fa-fw fa-water"></i>
                 <span>Laporan Banjir</span>
             </a>
-        </li>
+        </li> --}}
         <li class="nav-item @if(!empty($active_page) && $active_page == 'bantuan_donasi') active @endif">
             <a class="nav-link" href="{{ route('admins.donasi-bantuan-banjir.index') }}">
                 <i class="fas fa-fw fa-money-bill"></i>
                 <span>Bantuan Donasi</span>
             </a>
         </li>
-        <li class="nav-item @if(!empty($active_page) && $active_page == 'artikel') active @endif">
+        {{-- <li class="nav-item @if(!empty($active_page) && $active_page == 'artikel') active @endif">
             <a class="nav-link" href="{{ route('admins.artikel.index') }}">
                 <i class="fas fa-fw fa-newspaper"></i>
                 <span>Artikel</span>
             </a>
-        </li>
+        </li> --}}
         <li class="nav-item @if(!empty($active_page) && $active_page == 'petugas') active @endif">
             <a class="nav-link" href="{{ route('admins.petugas.index') }}">
                 <i class="fas fa-fw fa-user-tie"></i>
                 <span>Petugas</span>
             </a>
         </li>
-        <li class="nav-item @if(!empty($active_page) && $active_page == 'users') active @endif">
+        {{-- <li class="nav-item @if(!empty($active_page) && $active_page == 'users') active @endif">
             <a class="nav-link" href="{{ route('admins.users.index') }}">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Users</span>
             </a>
-        </li>
+        </li> --}}
     @endif
 
     @if (auth()->user()->roles == 'Petugas')
-        <li class="nav-item @if(!empty($active_page) && $active_page == 'laporan_banjir') active @endif">
+        {{-- <li class="nav-item @if(!empty($active_page) && $active_page == 'laporan_banjir') active @endif">
             <a class="nav-link" href="{{ route('petugas.laporan-banjir.index') }}">
                 <i class="fas fa-fw fa-water"></i>
                 <span>Laporan Banjir</span>
             </a>
-        </li>
+        </li> --}}
         <li class="nav-item @if(!empty($active_page) && $active_page == 'donasi') active @endif">
             <a class="nav-link" href="{{ route('petugas.donasi-bantuan-banjir.index') }}">
                 <i class="fas fa-fw fa-water"></i>

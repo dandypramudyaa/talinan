@@ -82,6 +82,9 @@
                                             <th>NO KK</th>
                                             <th>Alamat</th>
                                             <th>Status</th>
+                                            {{-- <th>Nilai</th> --}}
+                                            <th>Prioritas</th>
+                                            <th>Donasi yang diberikan</th>
                                             <th>Options</th>
                                         </tr>
                                     </thead>
@@ -91,20 +94,32 @@
                                                 <td colspan="5">Tidak ada data donasi bantuan banjir.</td>
                                             </tr>
                                         @else 
-                                            @foreach($donasi_bantuan_banjir as $bantuan)
+                                            @foreach($donasi_bantuan_banjir as $index=>$bantuan)
                                                 <tr>
                                                     <td>{{ $bantuan->nama }}</td>
                                                     <td>{{ $bantuan->nik }}</td>
                                                     <td>{{ $bantuan->no_kk }}</td>
                                                     <td>{{ $bantuan->alamat }}</td>
                                                     <td>{{ $bantuan->status }}</td>
+                                                    {{-- <td>{{ $bantuan->nilai_akhir }}</td> --}}
+                                                    <td>
+                                                        {{-- {{ $donasi_bantuan_banjir->currentPage() }} --}}
+                                                        {{ (20 * ($donasi_bantuan_banjir->currentPage() - 1)) + $index + 1 }}
+                                                    </td>
+                                                    <td>
+                                                        @if (!empty($bantuan->jumlah_yang_diberikan_admin))
+                                                            Rp. {{ number_format($bantuan->jumlah_yang_diberikan_admin, 2) }}
+                                                        @else
+                                                            N/A
+                                                        @endif
+                                                    </td>
                                                     <td>
                                                         <a href="{{ route('admins.donasi-bantuan-banjir.show', [
                                                             'id' => $bantuan->id
                                                         ]) }}" class="btn btn-primary">Detail</a>
-                                                        {{-- <a href="{{ route('admins.donasi-bantuan-banjir.delete', [
+                                                        <a href="{{ route('admins.donasi-bantuan-banjir.delete', [
                                                             'id' => $bantuan->id
-                                                        ]) }}" class="btn btn-danger">Hapus</a> --}}
+                                                        ]) }}" class="btn btn-danger">Hapus</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

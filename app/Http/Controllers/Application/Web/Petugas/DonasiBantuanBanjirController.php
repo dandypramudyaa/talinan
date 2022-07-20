@@ -24,7 +24,7 @@ class DonasiBantuanBanjirController extends Controller
      */
     public function index(Request $request)
     {
-        $donasiBanjir = new DonasiBanjir();
+        $donasiBanjir = DonasiBanjir::orderBy('nilai_akhir', 'desc');
         
         if(!empty($request->nama)){
             $donasiBanjir = $donasiBanjir->where('nama', 'LIKE', '%'.$request->nama.'%');
@@ -89,11 +89,56 @@ class DonasiBantuanBanjirController extends Controller
         $donasiBanjir->nama_bank = $request->nama_bank;
         $donasiBanjir->alamat = $request->alamat;
         $donasiBanjir->no_telepon = $request->no_telepon;
+        
         $donasiBanjir->parah_kerusakan_tempat_tinggal = $request->parah_kerusakan_tempat_tinggal;
+        if($request->parah_kerusakan_tempat_tinggal == 'ringan') {
+            $donasiBanjir->nilai_parah_kerusakan_tempat_tinggal = '0.106014179' * '0.127917375';
+        } elseif($request->parah_kerusakan_tempat_tinggal == 'sedang') {
+            $donasiBanjir->nilai_parah_kerusakan_tempat_tinggal = '0.25998883' * '0.127917375';
+        } elseif($request->parah_kerusakan_tempat_tinggal == 'tinggi') {
+            $donasiBanjir->nilai_parah_kerusakan_tempat_tinggal = '0.633996991' * '0.127917375';
+        }
+
         $donasiBanjir->tinggi_banjir = $request->tinggi_banjir;
+        if($request->tinggi_banjir == 'ringan') {
+            $donasiBanjir->nilai_tinggi_banjir = '0.122276688' * '0.081601926';
+        } elseif($request->tinggi_banjir == 'sedang') {
+            $donasiBanjir->nilai_tinggi_banjir = '0.229302832' * '0.081601926';
+        } elseif($request->tinggi_banjir == 'tinggi') {
+            $donasiBanjir->nilai_tinggi_banjir = '0.648420479' * '0.081601926';
+        }
+
         $donasiBanjir->jumlah_anggota_keluarga = $request->jumlah_anggota_keluarga;
+        if($request->jumlah_anggota_keluarga == 'ringan') {
+            $donasiBanjir->nilai_jumlah_anggota_keluarga = '0.128501401' * '0.040330579';
+        } elseif($request->jumlah_anggota_keluarga == 'sedang') {
+            $donasiBanjir->nilai_jumlah_anggota_keluarga = '0.276610644' * '0.040330579';
+        } elseif($request->jumlah_anggota_keluarga == 'tinggi') {
+            $donasiBanjir->nilai_jumlah_anggota_keluarga = '0.594887955' * '0.040330579';
+        }
+
         $donasiBanjir->korban_jiwa = $request->korban_jiwa;
+        if($request->korban_jiwa == 'ringan') {
+            $donasiBanjir->nilai_korban_jiwa = '0.109285756' * '0.557719843';
+        } elseif($request->korban_jiwa == 'sedang') {
+            $donasiBanjir->nilai_korban_jiwa = '0.309250427' * '0.557719843';
+        } elseif($request->korban_jiwa == 'tinggi') {
+            $donasiBanjir->nilai_korban_jiwa = '0.581463817' * '0.557719843';
+        }
+
         $donasiBanjir->anggota_keluarga_yang_terkena_penyakit = $request->anggota_keluarga_yang_terkena_penyakit;
+        if($request->tinggi_banjir == 'ringan') {
+            $donasiBanjir->nilai_anggota_keluarga_yang_terkena_penyakit = '0.11492674' * '0.192430277';
+        } elseif($request->tinggi_banjir == 'sedang') {
+            $donasiBanjir->nilai_anggota_keluarga_yang_terkena_penyakit = '0.182234432' * '0.192430277';
+        } elseif($request->tinggi_banjir == 'tinggi') {
+            $donasiBanjir->nilai_anggota_keluarga_yang_terkena_penyakit = '0.702838828' * '0.192430277';
+        }
+
+        $donasiBanjir->total_hasil = $donasiBanjir->nilai_parah_kerusakan_tempat_tinggal + $donasiBanjir->nilai_tinggi_banjir + $donasiBanjir->nilai_jumlah_anggota_keluarga + $donasiBanjir->nilai_korban_jiwa + $donasiBanjir->nilai_anggota_keluarga_yang_terkena_penyakit;
+
+        $donasiBanjir->nilai_akhir = ($donasiBanjir->nilai_parah_kerusakan_tempat_tinggal * '0.127917375') + ($donasiBanjir->nilai_tinggi_banjir * '0.081601926') + ($donasiBanjir->nilai_jumlah_anggota_keluarga * '0.040330579') + ($donasiBanjir->nilai_korban_jiwa * '0.557719843') + ($donasiBanjir->nilai_anggota_keluarga_yang_terkena_penyakit * '0.192430277');
+
         $donasiBanjir->status = "Menunggu Konfirmasi Admin";
         $donasiBanjir->save();
 
