@@ -33,6 +33,7 @@ Route::name('donasi-bantuan-banjir.')->prefix('donasi-bantuan-banjir')->group(fu
     Route::get('create',[DonasiBantuanBanjirController::class,'create'])->name('create');
     Route::post('store', [DonasiBantuanBanjirController::class,'store'])->name('store');
     Route::get('{id}/show',[DonasiBantuanBanjirController::class,'edit'])->name('show');
+    Route::get('{id}/cetak',[DonasiBantuanBanjirController::class,'cetakPdf'])->name('cetak-pdf');
     Route::post('{id}/update', [DonasiBantuanBanjirController::class,'update'])->name('update');
     Route::get('{id}/delete', [DonasiBantuanBanjirController::class,'destroy'])->name('delete');
 });

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="title-block">
-        <h1 class="title">Donasi Bantuan Banjir</h1>
+        <h1 class="title">Bantuan Dana</h1>
     </div>
 
     @if(Session::has('success_message'))
@@ -24,7 +24,7 @@
     @endif
 
     <section class="section mt-4">
-        <a href="{{ route('petugas.donasi-bantuan-banjir.create') }}" class="btn btn-primary mb-4">Buat Donasi Bantuan Banjir</a>
+        <a href="{{ route('petugas.donasi-bantuan-banjir.create') }}" class="btn btn-primary mb-4">Buat Bantuan Dana</a>
     </section>
 
     <section class="section">
@@ -33,7 +33,7 @@
                 <div class="card p-4">
                     <div class="card-block">
                         <div class="card-title-block">
-                            <h3 class="title">Cari Donasi Bantuan Banjir</h3>
+                            <h3 class="title">Cari Bantuan Dana</h3>
                         </div>
                         <form action="{{ route('petugas.donasi-bantuan-banjir.index') }}" method="GET" style="margin-bottom: 0">
                             <section>
@@ -68,7 +68,7 @@
                 <div class="card p-4">
                     <div class="card-block">
                         <div class="card-title-block">
-                            <h3 class="title">Donasi Bantuan Banjir</h3>
+                            <h3 class="title">Bantuan Dana</h3>
                         </div>
                         <section class="mt-4">
                             <div class="table-responsive">
@@ -79,7 +79,7 @@
                                             <th>NIK</th>
                                             <th>NO KK</th>
                                             <th>Alamat</th>
-                                            <th>Nilai</th>
+                                            <th>Status</th>
                                             <th>Prioritas</th>
                                             <th>Options</th>
                                         </tr>
@@ -87,7 +87,7 @@
                                     <tbody>
                                         @if(count($donasi_bantuan_banjir) <= 0)
                                             <tr>
-                                                <td colspan="5">Tidak ada data donasi bantuan banjir.</td>
+                                                <td colspan="5">Tidak ada data Bantuan Dana.</td>
                                             </tr>
                                         @else 
                                             @foreach($donasi_bantuan_banjir as $index=>$bantuan)
@@ -96,10 +96,21 @@
                                                     <td>{{ $bantuan->nik }}</td>
                                                     <td>{{ $bantuan->no_kk }}</td>
                                                     <td>{{ $bantuan->alamat }}</td>
-                                                    <td>{{ $bantuan->nilai_akhir }}</td>
                                                     <td>
-                                                        {{-- {{ $donasi_bantuan_banjir->currentPage() }} --}}
-                                                        {{ (20 * ($donasi_bantuan_banjir->currentPage() - 1)) + $index + 1 }}
+                                                        @if(!empty($bantuan->jumlah_yang_diberikan_admin))
+                                                            Dikonfirmasi oleh Kelurahan
+                                                        @else
+                                                            Belum dikonfirmasi oleh Kelurahan
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($bantuan->nilai_akhir <= 0.04717683873)
+                                                            Tidak Dapat Rekomendasi
+                                                        @elseif(($bantuan->nilai_akhir < 0.2138438668) && ($bantuan->nilai_akhir > 0.04717683873))
+                                                            Direkomendasikan
+                                                        @elseif($bantuan->nilai_akhir >= 0.2138438668)
+                                                            Diutamakan
+                                                        @endif
                                                     </td>
                                                     <td>
                                                         <a href="{{ route('petugas.donasi-bantuan-banjir.show', [
@@ -107,7 +118,7 @@
                                                         ]) }}" class="btn btn-primary">Detail</a>
                                                         <a href="{{ route('petugas.donasi-bantuan-banjir.delete', [
                                                             'id' => $bantuan->id
-                                                        ]) }}" class="btn btn-danger">Hapus</a>
+                                                        ]) }}" class="btn btn-danger mt-2">Hapus</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

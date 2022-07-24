@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="title-block">
-        <h1 class="title">Buat Donasi Bantuan Banjir</h1>
+        <h1 class="title">Buat Bantuan Dana</h1>
     </div>
 
     <section class="section mt-4">
@@ -11,7 +11,7 @@
                 <div class="card p-4">
                     <div class="card-block">
                         <div class="card-title-block mb-4">
-                            <h4 class="title">Form Buat Donasi Bantuan Banjir</h4>
+                            <h4 class="title">Form Buat Bantuan Dana</h4>
                         </div>
                         <form class="user" action="{{ route('petugas.donasi-bantuan-banjir.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -55,10 +55,10 @@
                                 <input type="text" class="form-control" placeholder="Masukkan No Telepon" name="no_telepon">
                             </div>
 
-                            {{-- <div class="mb-3">
+                            <div class="form-group">
                                 <label for="formFile" class="form-label">Foto</label>
                                 <input class="form-control" type="file" name="image" id="formFile">
-                            </div> --}}
+                            </div>
 
                             <div class="form-group">
                                 <label>Seberapa parah kerusakan tempat tinggal?</label>

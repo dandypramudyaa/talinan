@@ -12,7 +12,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('home-assets/css/slick-theme.css') }}"/>
         <link rel="stylesheet" type="text/css" href="{{ asset('home-assets/css/slick.css') }}"/>
 
-        <title>TA LINAN</title>
+        <title>Talinan</title>
         
         @yield('style')
 

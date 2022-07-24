@@ -8,6 +8,7 @@ use App\Models\DonasiBanjir;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use View;
+use PDF;
 
 class DonasiBantuanBanjirController extends Controller
 {
@@ -140,5 +141,13 @@ class DonasiBantuanBanjirController extends Controller
         $donasi->delete();
         
         return redirect()->route('admins.donasi-bantuan-banjir.index')->with('success_message','Berhasil menghapus donasi bantuan banjir!');
+    }
+
+    public function cetakPdf($id)
+    {
+        $donasi = DonasiBanjir::find($id);
+        
+        $pdf = PDF::loadview('pdf.donasi-bantuan-pdf', ['donasi'=>$donasi]);
+        return $pdf->stream();
     }
 }

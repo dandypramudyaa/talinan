@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="title-block">
-        <h1 class="title">Donasi Bantuan Banjir</h1>
+        <h1 class="title">Bantuan Dana</h1>
         {{-- <p class='title-description'>Manage users who will have be able to control all aspects of the application.</p> --}}
     </div>
 
@@ -34,7 +34,7 @@
                 <div class="card p-4">
                     <div class="card-block">
                         <div class="card-title-block">
-                            <h3 class="title">Cari Donasi Bantuan Banjir</h3>
+                            <h3 class="title">Cari Bantuan Dana</h3>
                         </div>
                         <form action="{{ route('admins.donasi-bantuan-banjir.index') }}" method="GET" style="margin-bottom: 0">
                             @csrf
@@ -70,7 +70,7 @@
                 <div class="card p-4">
                     <div class="card-block">
                         <div class="card-title-block">
-                            <h3 class="title">Donasi Bantuan Banjir</h3>
+                            <h3 class="title">Bantuan Dana</h3>
                         </div>
                         <section class="mt-4">
                             <div class="table-responsive">
@@ -103,8 +103,14 @@
                                                     <td>{{ $bantuan->status }}</td>
                                                     {{-- <td>{{ $bantuan->nilai_akhir }}</td> --}}
                                                     <td>
-                                                        {{-- {{ $donasi_bantuan_banjir->currentPage() }} --}}
-                                                        {{ (20 * ($donasi_bantuan_banjir->currentPage() - 1)) + $index + 1 }}
+                                                        @if($bantuan->nilai_akhir <= 0.04717683873)
+                                                            Tidak Dapat Rekomendasi
+                                                        @elseif(($bantuan->nilai_akhir < 0.2138438668) && ($bantuan->nilai_akhir > 0.04717683873))
+                                                            Direkomendasikan
+                                                        @elseif($bantuan->nilai_akhir >= 0.2138438668)
+                                                            Diutamakan
+                                                        @endif
+                                                        {{-- {{ (20 * ($donasi_bantuan_banjir->currentPage() - 1)) + $index + 1 }} --}}
                                                     </td>
                                                     <td>
                                                         @if (!empty($bantuan->jumlah_yang_diberikan_admin))
@@ -119,7 +125,7 @@
                                                         ]) }}" class="btn btn-primary">Detail</a>
                                                         <a href="{{ route('admins.donasi-bantuan-banjir.delete', [
                                                             'id' => $bantuan->id
-                                                        ]) }}" class="btn btn-danger">Hapus</a>
+                                                        ]) }}" class="btn btn-danger mt-2">Hapus</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

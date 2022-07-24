@@ -6,7 +6,7 @@
         {{-- <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div> --}}
-        <div class="sidebar-brand-text mx-3">TA LINAN</div>
+        <div class="sidebar-brand-text mx-3">Talinan</div>
     </a>
 
     <!-- Divider -->
@@ -48,7 +48,7 @@
         <li class="nav-item @if(!empty($active_page) && $active_page == 'bantuan_donasi') active @endif">
             <a class="nav-link" href="{{ route('admins.donasi-bantuan-banjir.index') }}">
                 <i class="fas fa-fw fa-money-bill"></i>
-                <span>Bantuan Donasi</span>
+                <span>Bantuan Dana</span>
             </a>
         </li>
         {{-- <li class="nav-item @if(!empty($active_page) && $active_page == 'artikel') active @endif">
@@ -60,7 +60,7 @@
         <li class="nav-item @if(!empty($active_page) && $active_page == 'petugas') active @endif">
             <a class="nav-link" href="{{ route('admins.petugas.index') }}">
                 <i class="fas fa-fw fa-user-tie"></i>
-                <span>Petugas</span>
+                <span>RT / RW</span>
             </a>
         </li>
         {{-- <li class="nav-item @if(!empty($active_page) && $active_page == 'users') active @endif">
@@ -81,7 +81,7 @@
         <li class="nav-item @if(!empty($active_page) && $active_page == 'donasi') active @endif">
             <a class="nav-link" href="{{ route('petugas.donasi-bantuan-banjir.index') }}">
                 <i class="fas fa-fw fa-water"></i>
-                <span>Donasi</span>
+                <span>Bantuan Dana</span>
             </a>
         </li>
     @endif

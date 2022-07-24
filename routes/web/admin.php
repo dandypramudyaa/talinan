@@ -31,10 +31,11 @@ Route::name('laporan-banjir.')->prefix('laporan-banjir')->group(function () {
     Route::get('{id}/delete', [LaporanBanjirController::class,'destroy'])->name('delete');
 });
 
-Route::name('donasi-bantuan-banjir.')->prefix('donasi-bantuan-banjir')->group(function () {
+Route::name('donasi-bantuan-banjir.')->prefix('bantuan-dana')->group(function () {
     Route::get('/', [DonasiBantuanBanjirController::class,'index'])->name('index');
     Route::get('create',[DonasiBantuanBanjirController::class,'create'])->name('create');
     Route::post('store', [DonasiBantuanBanjirController::class,'store'])->name('store');
+    Route::get('{id}/cetak',[DonasiBantuanBanjirController::class,'cetakPdf'])->name('cetak-pdf');
     Route::get('{id}/show',[DonasiBantuanBanjirController::class,'edit'])->name('show');
     Route::post('{id}/update', [DonasiBantuanBanjirController::class,'update'])->name('update');
     Route::get('{id}/delete', [DonasiBantuanBanjirController::class,'destroy'])->name('delete');
@@ -49,7 +50,7 @@ Route::name('artikel.')->prefix('artikel')->group(function () {
     Route::get('{id}/delete', [ArtikelController::class,'destroy'])->name('delete');
 });
 
-Route::name('petugas.')->prefix('petugas')->group(function () {
+Route::name('petugas.')->prefix('rt-rw')->group(function () {
     Route::get('/', [PetugasController::class,'index'])->name('index');
     Route::get('create',[PetugasController::class,'create'])->name('create');
     Route::post('store', [PetugasController::class,'store'])->name('store');

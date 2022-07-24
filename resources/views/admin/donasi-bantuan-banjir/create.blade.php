@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="title-block">
-        <h1 class="title">Buat Donasi Bantuan Banjir</h1>
+        <h1 class="title">Buat Bantuan Dana</h1>
         {{-- <p class='title-description'>Manage users who will have be able to control all aspects of the application.</p> --}}
     </div>
 
@@ -12,7 +12,7 @@
                 <div class="card p-4">
                     <div class="card-block">
                         <div class="card-title-block mb-4">
-                            <h4 class="title">Form Buat Donasi Bantuan Banjir</h4>
+                            <h4 class="title">Form Buat Bantuan Dana</h4>
                         </div>
                         <form class="user" action="{{ route('admins.donasi-bantuan-banjir.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf

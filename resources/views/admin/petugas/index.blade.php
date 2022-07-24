@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="title-block">
-        <h1 class="title">Petugas</h1>
+        <h1 class="title">RT / RW</h1>
         {{-- <p class='title-description'>Manage users who will have be able to control all aspects of the application.</p> --}}
     </div>
 
@@ -25,7 +25,7 @@
     @endif
 
     <section class="section">
-        <a href="{{ route('admins.petugas.create') }}" class="btn btn-primary mb-4">Buat Petugas</a>
+        <a href="{{ route('admins.petugas.create') }}" class="btn btn-primary mb-4">Buat RT / RW</a>
     </section>
 
     <section class="section">
@@ -34,7 +34,7 @@
                 <div class="card p-4">
                     <div class="card-block">
                         <div class="card-title-block">
-                            <h3 class="title">Cari Petugas</h3>
+                            <h3 class="title">Cari RT / RW</h3>
                         </div>
                         <form action="{{ route('admins.petugas.index') }}" method="GET" style="margin-bottom: 0">
                             @csrf
@@ -76,7 +76,7 @@
                 <div class="card p-4">
                     <div class="card-block">
                         <div class="card-title-block">
-                            <h3 class="title">Petugas</h3>
+                            <h3 class="title">RT / RW</h3>
                         </div>
                         <section>
                             <div class="table-responsive">
@@ -93,7 +93,7 @@
                                     <tbody>
                                         @if(count($users) <= 0)
                                             <tr>
-                                                <td colspan="5">Tidak ada data petugas.</td>
+                                                <td colspan="5">Tidak ada data RT / RW.</td>
                                             </tr>
                                         @else 
                                             @foreach($users as $user)

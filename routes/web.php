@@ -36,11 +36,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware();
 
-Route::name('petugas.')->prefix('petugas')->group(function () {
+Route::name('petugas.')->prefix('rt-rw')->group(function () {
     require_once __DIR__.'/web/petugas.php';
 });
 
-Route::name('admins.')->prefix('admin')->group(function () {
+Route::name('admins.')->prefix('kelurahan')->group(function () {
 
     require_once __DIR__.'/web/admin.php';
 

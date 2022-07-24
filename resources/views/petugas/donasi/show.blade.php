@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="title-block">
-        <h1 class="title">Detail Donasi Bantuan Banjir</h1>
+        <h1 class="title">Detail Bantuan Dana</h1>
     </div>
 
     @if(Session::has('success_message'))
@@ -29,7 +29,7 @@
                 <div class="card p-4">
                     <div class="card-block">
                         <div class="card-title-block mb-4">
-                            <h4 class="title">Detail Donasi Bantuan Banjir</h4>
+                            <h4 class="title">Detail Bantuan Dana</h4>
                         </div>
                         <form class="user" action="{{ route('petugas.donasi-bantuan-banjir.update', $donasi->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -73,10 +73,17 @@
                                 <input type="text" class="form-control" placeholder="Masukkan No Telepon" name="no_telepon" value="{{ $donasi->no_telepon }}">
                             </div>
 
-                            {{-- <div class="mb-3">
+                            <div class="mb-3">
                                 <label for="formFile" class="form-label">Foto</label>
                                 <input class="form-control" type="file" name="image" id="formFile">
-                            </div> --}}
+                            </div>
+
+                            @if(!empty($donasi->foto))
+                                <div class="mb-3">
+                                    <img src="{{ asset('storage/' . $donasi->foto) }}" style="width: 500px;">
+                                </div>
+                            @endif
+
 
                             <div class="form-group">
                                 <label>Seberapa parah kerusakan tempat tinggal?</label>
@@ -192,6 +199,14 @@
                                 Submit
                             </button>
                         </form>
+
+                        @if (!empty($donasi->jumlah_yang_diberikan_admin))
+                            <a href="{{ route('admins.donasi-bantuan-banjir.cetak-pdf', $donasi->id) }}">
+                                <button class="btn btn-primary btn-user mt-4">
+                                    Unduh File
+                                </button>
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
