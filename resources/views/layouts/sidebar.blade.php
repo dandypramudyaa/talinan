@@ -63,6 +63,12 @@
                 <span>RT / RW</span>
             </a>
         </li>
+        <li class="nav-item @if(!empty($active_page) && $active_page == 'data_warga') active @endif">
+            <a class="nav-link" href="{{ route('admins.data-warga.index') }}">
+                <i class="fas fa-fw fa-water"></i>
+                <span>Data Warga</span>
+            </a>
+        </li>
         {{-- <li class="nav-item @if(!empty($active_page) && $active_page == 'users') active @endif">
             <a class="nav-link" href="{{ route('admins.users.index') }}">
                 <i class="fas fa-fw fa-cog"></i>
@@ -82,6 +88,12 @@
             <a class="nav-link" href="{{ route('petugas.donasi-bantuan-banjir.index') }}">
                 <i class="fas fa-fw fa-water"></i>
                 <span>Bantuan Dana</span>
+            </a>
+        </li>
+        <li class="nav-item @if(!empty($active_page) && $active_page == 'data_warga') active @endif">
+            <a class="nav-link" href="{{ route('petugas.data-warga.index') }}">
+                <i class="fas fa-fw fa-water"></i>
+                <span>Data Warga</span>
             </a>
         </li>
     @endif

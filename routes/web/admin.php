@@ -7,6 +7,7 @@ use App\Http\Controllers\Application\Web\Admin\DonasiBantuanBanjirController;
 use App\Http\Controllers\Application\Web\Admin\ArtikelController;
 use App\Http\Controllers\Application\Web\Admin\PetugasController;
 use App\Http\Controllers\Application\Web\Admin\UserController;
+use App\Http\Controllers\Application\Web\Admin\DataWargaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,4 +67,13 @@ Route::name('users.')->prefix('users')->group(function () {
     Route::get('{id}/show',[UserController::class,'edit'])->name('show');
     Route::post('{id}/update', [UserController::class,'update'])->name('update');
     Route::get('{id}/delete', [UserController::class,'destroy'])->name('delete');
+});
+
+Route::name('data-warga.')->prefix('data-warga')->group(function () {
+    Route::get('/', [DataWargaController::class,'index'])->name('index');
+    Route::get('create',[DataWargaController::class,'create'])->name('create');
+    Route::post('store', [DataWargaController::class,'store'])->name('store');
+    Route::get('{id}/show',[DataWargaController::class,'edit'])->name('show');
+    Route::post('{id}/update', [DataWargaController::class,'update'])->name('update');
+    Route::get('{id}/delete', [DataWargaController::class,'destroy'])->name('delete');
 });

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Application\Web\Petugas\DashboardController;
 use App\Http\Controllers\Application\Web\Petugas\LaporanBanjirController;
 use App\Http\Controllers\Application\Web\Petugas\DonasiBantuanBanjirController;
+use App\Http\Controllers\Application\Web\Petugas\DataWargaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +37,13 @@ Route::name('donasi-bantuan-banjir.')->prefix('donasi-bantuan-banjir')->group(fu
     Route::get('{id}/cetak',[DonasiBantuanBanjirController::class,'cetakPdf'])->name('cetak-pdf');
     Route::post('{id}/update', [DonasiBantuanBanjirController::class,'update'])->name('update');
     Route::get('{id}/delete', [DonasiBantuanBanjirController::class,'destroy'])->name('delete');
+});
+
+Route::name('data-warga.')->prefix('data-warga')->group(function () {
+    Route::get('/', [DataWargaController::class,'index'])->name('index');
+    Route::get('create',[DataWargaController::class,'create'])->name('create');
+    Route::post('store', [DataWargaController::class,'store'])->name('store');
+    Route::get('{id}/show',[DataWargaController::class,'edit'])->name('show');
+    Route::post('{id}/update', [DataWargaController::class,'update'])->name('update');
+    Route::get('{id}/delete', [DataWargaController::class,'destroy'])->name('delete');
 });

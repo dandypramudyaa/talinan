@@ -45,6 +45,18 @@
                             @endif
 
                             <div class="form-group">
+                                <label>Warga</label>
+                                <select name="warga_id" id="warga_id" class="form-control">
+                                    <option disabled>Pilih Warga</option>
+                                    @foreach ($data_warga as $warga)
+                                        <option @if ($donasi->warga_id == $warga->id)
+                                            selected
+                                        @endif value="{{ $warga->id }}">{{ $warga->nama }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            {{-- <div class="form-group">
                                 <label>Nama Sesuai KTP</label>
                                 <input type="text" class="form-control" placeholder="Masukkan Nama" name="nama" value="{{ $donasi->nama }}">
                             </div>
@@ -71,7 +83,7 @@
                             <div class="form-group">
                                 <label>No Telepon</label>
                                 <input type="text" class="form-control" placeholder="Masukkan No Telepon" name="no_telepon" value="{{ $donasi->no_telepon }}">
-                            </div>
+                            </div> --}}
 
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Foto</label>

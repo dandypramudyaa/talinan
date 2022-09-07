@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Application\Web\Petugas;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\DonasiBanjir;
+use App\Models\DataWarga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use View;
@@ -51,7 +52,11 @@ class DonasiBantuanBanjirController extends Controller
      */
     public function create()
     {
-        return view('petugas.donasi.create');
+        $dataWarga = DataWarga::orderBy('nama', 'asc')->get();
+
+        return view('petugas.donasi.create', [
+            'data_warga' => $dataWarga
+        ]);
     }
 
     /**
@@ -63,13 +68,14 @@ class DonasiBantuanBanjirController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama' => 'required',
-            'nik' => 'required',
-            'no_kk' => 'required',
-            'no_rekening' => 'required',
-            'nama_bank' => 'required',
-            'alamat' => 'required',
-            'no_telepon' => 'required',
+            // 'nama' => 'required',
+            // 'nik' => 'required',
+            // 'no_kk' => 'required',
+            // 'no_rekening' => 'required',
+            // 'nama_bank' => 'required',
+            // 'alamat' => 'required',
+            // 'no_telepon' => 'required',
+            'warga_id' => 'required',
             'parah_kerusakan_tempat_tinggal' => 'required',
             'tinggi_banjir' => 'required',
             'jumlah_anggota_keluarga' => 'required',
@@ -78,18 +84,21 @@ class DonasiBantuanBanjirController extends Controller
             'image' => 'required',
         ]);
 
+        $dataWarga = DataWarga::where('id', $request->warga_id)->first();
+
         // $name = $request->file('image')->getClientOriginalName();
         $path = $request->file('image')->store('public/donasi-bantuan');
 
         $donasiBanjir = new DonasiBanjir();
         $donasiBanjir->user_id = auth()->user()->id;
-        $donasiBanjir->nama = $request->nama;
-        $donasiBanjir->nik = $request->nik;
-        $donasiBanjir->no_kk = $request->no_kk;
-        $donasiBanjir->no_rekening = $request->no_rekening;
-        $donasiBanjir->nama_bank = $request->nama_bank;
-        $donasiBanjir->alamat = $request->alamat;
-        $donasiBanjir->no_telepon = $request->no_telepon;
+        $donasiBanjir->warga_id = $dataWarga->id;
+        $donasiBanjir->nama = $dataWarga->nama;
+        $donasiBanjir->nik = $dataWarga->nik;
+        $donasiBanjir->no_kk = $dataWarga->no_kk;
+        $donasiBanjir->no_rekening = $dataWarga->no_rekening;
+        $donasiBanjir->nama_bank = $dataWarga->nama_bank;
+        $donasiBanjir->alamat = $dataWarga->alamat;
+        $donasiBanjir->no_telepon = $dataWarga->no_telepon;
         $donasiBanjir->foto = str_replace('public/', '', $path);
         
         $donasiBanjir->parah_kerusakan_tempat_tinggal = $request->parah_kerusakan_tempat_tinggal;
@@ -156,9 +165,11 @@ class DonasiBantuanBanjirController extends Controller
     public function edit($id)
     {
         $donasi = DonasiBanjir::find($id);
+        $dataWarga = DataWarga::orderBy('nama', 'asc')->get();
 
         return view('petugas.donasi.show',[
-            'donasi' => $donasi
+            'donasi' => $donasi,
+            'data_warga' => $dataWarga
         ]);
     }
 
@@ -172,19 +183,21 @@ class DonasiBantuanBanjirController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama' => 'required',
-            'nik' => 'required',
-            'no_kk' => 'required',
-            'no_rekening' => 'required',
-            'nama_bank' => 'required',
-            'alamat' => 'required',
-            'no_telepon' => 'required',
+            // 'nama' => 'required',
+            // 'nik' => 'required',
+            // 'no_kk' => 'required',
+            // 'no_rekening' => 'required',
+            // 'nama_bank' => 'required',
+            // 'alamat' => 'required',
+            // 'no_telepon' => 'required',
             'parah_kerusakan_tempat_tinggal' => 'required',
             'tinggi_banjir' => 'required',
             'jumlah_anggota_keluarga' => 'required',
             'korban_jiwa' => 'required',
             'anggota_keluarga_yang_terkena_penyakit' => 'required',
         ]);
+
+        $dataWarga = DataWarga::where('id', $request->warga_id)->first();
 
         $donasiBanjir = DonasiBanjir::where('id', $id)->first();
 
@@ -199,13 +212,14 @@ class DonasiBantuanBanjirController extends Controller
         }
 
         $donasiBanjir->user_id = auth()->user()->id;
-        $donasiBanjir->nama = $request->nama;
-        $donasiBanjir->nik = $request->nik;
-        $donasiBanjir->no_kk = $request->no_kk;
-        $donasiBanjir->no_rekening = $request->no_rekening;
-        $donasiBanjir->nama_bank = $request->nama_bank;
-        $donasiBanjir->alamat = $request->alamat;
-        $donasiBanjir->no_telepon = $request->no_telepon;
+        $donasiBanjir->warga_id = $dataWarga->id;
+        $donasiBanjir->nama = $dataWarga->nama;
+        $donasiBanjir->nik = $dataWarga->nik;
+        $donasiBanjir->no_kk = $dataWarga->no_kk;
+        $donasiBanjir->no_rekening = $dataWarga->no_rekening;
+        $donasiBanjir->nama_bank = $dataWarga->nama_bank;
+        $donasiBanjir->alamat = $dataWarga->alamat;
+        $donasiBanjir->no_telepon = $dataWarga->no_telepon;
         
         $donasiBanjir->parah_kerusakan_tempat_tinggal = $request->parah_kerusakan_tempat_tinggal;
         if($request->parah_kerusakan_tempat_tinggal == 'ringan') {

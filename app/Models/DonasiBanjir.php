@@ -35,5 +35,11 @@ class DonasiBanjir extends Model
         'nilai_anggota_keluarga_yang_terkena_penyakit',
         'total_hasil',
         'nilai_akhir',
+
+        'warga_id'
     ];
+
+    public function warga() {
+        return $this->hasOne(DataWarga::class, 'id', 'warga_id');
+    }
 }
