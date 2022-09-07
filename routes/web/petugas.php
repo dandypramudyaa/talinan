@@ -43,6 +43,7 @@ Route::name('data-warga.')->prefix('data-warga')->group(function () {
     Route::get('/', [DataWargaController::class,'index'])->name('index');
     Route::get('create',[DataWargaController::class,'create'])->name('create');
     Route::post('store', [DataWargaController::class,'store'])->name('store');
+    Route::post('import', [DataWargaController::class,'import'])->name('import');
     Route::get('{id}/show',[DataWargaController::class,'edit'])->name('show');
     Route::post('{id}/update', [DataWargaController::class,'update'])->name('update');
     Route::get('{id}/delete', [DataWargaController::class,'destroy'])->name('delete');

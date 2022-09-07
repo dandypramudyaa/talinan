@@ -142,4 +142,47 @@ class DataWargaController extends Controller
         return redirect()->route('petugas.data-warga.index')->with('success_message','Berhasil menghapus data warga!');
     }
 
+    public function import(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|file',
+        ]);
+
+        $fileContents = file_get_contents($request->file);
+        $fileContents = str_replace('\n', '', $fileContents);
+        
+        $rows = explode("\n", $fileContents);
+        array_shift($rows);
+
+        foreach($rows as $row) {
+            $cols = str_getcsv($row, ';');
+            try {
+                $nama =  $cols[0];
+                $nik =  $cols[1];
+                $no_kk =  $cols[2];
+                $no_rekening =  $cols[3];
+                $nama_bank =  $cols[4];
+                $alamat =  $cols[5];
+                $no_telepon =  $cols[6];
+            } catch (\Exception $e) {
+                continue;
+            }
+            $checkDataWarga = DataWarga::where('nik', $nik)->first();
+
+            if (empty($checkDataWarga)) {
+                $dataWargaRow = new DataWarga();
+                $dataWargaRow->nama = $nama;
+                $dataWargaRow->nik = $nik;
+                $dataWargaRow->no_kk = $no_kk;
+                $dataWargaRow->no_rekening = $no_rekening;
+                $dataWargaRow->nama_bank = $nama_bank;
+                $dataWargaRow->alamat = $alamat;
+                $dataWargaRow->no_telepon = $no_telepon;
+                $dataWargaRow->save();
+            }
+        }
+
+        return redirect()->route('petugas.data-warga.index')->with('success_message','Berhasil meng-import data warga!');
+    }
+
 }

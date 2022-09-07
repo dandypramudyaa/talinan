@@ -27,6 +27,36 @@
         <a href="{{ route('petugas.data-warga.create') }}" class="btn btn-primary mb-4">Buat Data Warga Baru</a>
     </section>
 
+    <section class="section mb-4">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card p-4">
+                    <div class="card-block">
+                        <div class="card-title-block">
+                            <h3 class="title">Import Data Warga</h3>
+                        </div>
+                        <form action="{{ route('admins.data-warga.import') }}" method="POST" style="margin-bottom: 0" enctype="multipart/form-data">
+                            @csrf
+                            <section>
+                                <div class="d-flex flex-row">
+                                    <div style="margin-right: 20px; width: 100%">
+                                        <div class="form-group" style='margin-bottom: 0'>
+                                            <label class="control-label">File</label>
+                                            <input type="file" class="form-control boxed" name="file">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-2">
+                                        <button class="btn btn-primary" type="submit" style="width: 100%;margin-top: 32px; height: 38px">Import</button>
+                                    </div>
+                                </div>
+                            </section>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="section">
         <div class="row">
             <div class="col-sm-12">
