@@ -104,9 +104,9 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if($bantuan->nilai_akhir <= 0.04717683873)
+                                                        @if($bantuan->nilai_akhir <= 0.44657374)
                                                             Tidak Dapat Rekomendasi
-                                                        @elseif(($bantuan->nilai_akhir < 0.2138438668) && ($bantuan->nilai_akhir > 0.04717683873))
+                                                        @elseif(($bantuan->nilai_akhir < 0.2138438668) && ($bantuan->nilai_akhir > 0.44657374))
                                                             Direkomendasikan
                                                         @elseif($bantuan->nilai_akhir >= 0.2138438668)
                                                             Diutamakan
